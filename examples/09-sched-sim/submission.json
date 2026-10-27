@@ -1,6 +1,6 @@
 {
   "label": "A6",
-  "student": "yournetid",
+  "student": "imadrizpizarro",
   "entrypoint": "make && make workload && make compare",
-  "what_i_built": "one sentence, in your own words"
+  "what_i_built": "I built a simulator in C that runs jobs using three different scheduling methods and calculates their results"
 }

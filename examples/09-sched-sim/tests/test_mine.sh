@@ -46,11 +46,59 @@ line() { p=$1; shift; "$SIM" "$@" 2>/dev/null | grep "^$p" | head -1; }
 
 # ---- the handout's three named tests: replace each stub ---------------------
 
-bad "the CPU idles until the next job arrives (not written yet)"
-bad "a job arriving as a slice ends runs before the job whose slice ended (not written yet)"
-bad "a boost lifts a waiting job back to the top queue (not written yet)"
+
+# Test 1: CPU waits for the next job
+workload idle.txt <<'EOF'
+A 0 2
+B 5 2
+EOF
+
+check "the CPU idles until the next job arrives" \
+    "AA...BB" "$(timeline fcfs "$T/idle.txt")"
+
+
+# Test 2: A new job goes before the old job
+workload slice.txt <<'EOF'
+A 0 4
+B 2 1
+EOF
+
+check "a job arriving as a slice ends runs before the job whose slice ended" \
+    "AABAA" "$(timeline rr "$T/slice.txt" 2)"
+
+
+# Test 3: Boost moves a waiting job to high priority
+workload boost.txt <<'EOF'
+A 0 4
+B 0 4
+C 3 2
+EOF
+
+check "a boost lifts a waiting job back to the top queue" \
+    "ABACBACBAB" "$(timeline mlfq "$T/boost.txt" 1 1 4)"
+
 
 # ---- your own tests ------------------------------------------------------------
 
+# Test 4: Two jobs arrive together
+workload same.txt <<'EOF'
+A 0 2
+B 0 2
+EOF
+
+check "jobs arriving together keep their order" \
+    "AABB" "$(timeline fcfs "$T/same.txt")"
+
+
+# Test 5: Check turnaround and response
+check "FCFS job B metrics" \
+    "0 2 2 4 4 2" "$(row B fcfs "$T/same.txt")"
+
+
+
 echo "$pass passed, $fail failed"
 [ "$fail" -eq 0 ]
+
+
+
+

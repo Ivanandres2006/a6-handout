@@ -1,0 +1,7 @@
+Pre-submission warnings, shown when `make test` ran.
+These were displayed before submission and not resolved.
+
+- These answers are still blank or hold the placeholder: fcfs_avg_response, rr_avg_response, mlfq_avg_response, reversal_job, response_line.
+- README.md still has template prompt line(s) at line 8, 12, 16, 20 - replace each with your own words.
+- REPORT.md still has template prompt line(s) at line 8, 12, 22, 26, 30 - replace each with your own words.
+- TODO/DONE instruction markers are still in your source (src/sim.c:4, src/metrics.c:5) - remove them once the work is done.

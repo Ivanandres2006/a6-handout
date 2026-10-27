@@ -1,0 +1,11 @@
+# A6 workload for imadrizpizarro: NAME ARRIVAL BURST
+# rr_slice 3
+# mlfq_slice 4 allot 4 boost 30
+A 0 14
+B 0 5
+C 3 2
+D 6 8
+E 8 1
+F 8 6
+G 10 2
+H 12 7
