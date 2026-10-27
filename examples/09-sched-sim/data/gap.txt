@@ -1,0 +1,5 @@
+# A gap: nothing is ready between ticks 3 and 5, so the CPU idles.
+# NAME ARRIVAL BURST
+A 0 3
+B 5 2
+C 6 2

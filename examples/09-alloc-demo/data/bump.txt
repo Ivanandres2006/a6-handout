@@ -1,0 +1,8 @@
+# A bump allocator hands out the next bytes and never takes any back.
+# +NAME BYTES asks for BYTES and calls the block NAME; -NAME frees it.
++A 20
++B 40
+-A
++C 20
++D 300
++E 100

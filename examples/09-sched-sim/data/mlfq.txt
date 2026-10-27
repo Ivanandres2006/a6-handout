@@ -1,0 +1,6 @@
+# MLFQ: A runs through its allotment in the top queue and moves down; B and
+# C, arriving later, run ahead of it from then on.
+# NAME ARRIVAL BURST
+A 0 8
+B 1 3
+C 6 2

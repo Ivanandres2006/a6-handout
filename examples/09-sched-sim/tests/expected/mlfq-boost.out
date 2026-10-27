@@ -1,0 +1,11 @@
+mlfq (slice 1, allotment 2, boost 5) on data/boost.txt
+time  0    5    10   
+      AABBCACDAEDAEA
+job  arrival  burst  start  finish  turnaround  response
+A          0      6      0      14          14         0
+B          2      2      2       4           2         0
+C          4      2      4       7           3         0
+D          6      2      7      11           5         1
+E          8      2      9      13           5         1
+average turnaround 5.80, average response 0.40
+worst response 1 (job D)

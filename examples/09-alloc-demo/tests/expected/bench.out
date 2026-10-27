@@ -1,0 +1,7 @@
+100 random steps (requests of 1-64 bytes, and frees), arena 512 bytes
+seed  requests  bump failed  list failed  of those, with enough free bytes  free blocks at end
+   1        56           41           23                                16                   1
+   2        53           41           10                                 8                   9
+   3        54           42            6                                 6                   5
+   4        57           44           20                                17                   3
+   5        59           46           18                                16                   1

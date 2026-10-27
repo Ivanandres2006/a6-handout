@@ -1,0 +1,6 @@
+{
+  "label": "A6",
+  "student": "yournetid",
+  "entrypoint": "make && make workload && make compare",
+  "what_i_built": "one sentence, in your own words"
+}

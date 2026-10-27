@@ -1,0 +1,37 @@
+fcfs on data/class.txt
+time  0    5    10   15   
+      AAAAAAABBBBCDDDD
+job  arrival  burst  start  finish  turnaround  response
+A          0      7      0       7           7         0
+B          2      4      7      11           9         5
+C          4      1     11      12           8         7
+D          5      4     12      16          11         7
+average turnaround 8.75, average response 4.75
+worst response 7 (job C)
+
+rr (slice 2) on data/class.txt
+time  0    5    10   15   
+      AABBAACBBDDAADDA
+job  arrival  burst  start  finish  turnaround  response
+A          0      7      0      16          16         0
+B          2      4      2       9           7         0
+C          4      1      6       7           3         2
+D          5      4      9      15          10         4
+average turnaround 9.00, average response 1.50
+worst response 4 (job D)
+
+mlfq (slice 3, allotment 6, boost 12) on data/class.txt
+time  0    5    10   15   
+      AAABBBAAACDDDBAD
+job  arrival  burst  start  finish  turnaround  response
+A          0      7      0      15          15         0
+B          2      4      3      14          12         1
+C          4      1      9      10           6         5
+D          5      4     10      16          11         5
+average turnaround 11.00, average response 2.75
+worst response 5 (job C)
+
+policy  avg turnaround  avg response  worst response
+fcfs              8.75          4.75         7 (job C)
+rr                9.00          1.50         4 (job D)
+mlfq             11.00          2.75         5 (job C)

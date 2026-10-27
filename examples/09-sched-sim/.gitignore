@@ -1,0 +1,5 @@
+# local to this machine: make test keeps .worklog; make submit builds the zip
+.worklog
+.submit-staging/
+*.zip
+build/

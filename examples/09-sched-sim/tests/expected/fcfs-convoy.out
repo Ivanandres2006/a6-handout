@@ -1,0 +1,9 @@
+fcfs on data/convoy.txt
+time  0    5    10   
+      AAAAAAAABBCC
+job  arrival  burst  start  finish  turnaround  response
+A          0      8      0       8           8         0
+B          0      2      8      10          10         8
+C          0      2     10      12          12        10
+average turnaround 10.00, average response 6.00
+worst response 10 (job C)

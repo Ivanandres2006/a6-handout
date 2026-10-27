@@ -1,0 +1,5 @@
+# One long job first, then two short ones, all arriving at tick 0.
+# NAME ARRIVAL BURST
+A 0 8
+B 0 2
+C 0 2

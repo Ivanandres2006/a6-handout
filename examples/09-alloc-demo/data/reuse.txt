@@ -1,0 +1,7 @@
+# A free list reuses a freed block, and splits it when the rest can hold
+# another block.
++A 100
++B 20
+-A
++C 20
++D 50

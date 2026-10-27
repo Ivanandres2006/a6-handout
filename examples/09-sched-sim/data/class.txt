@@ -1,0 +1,6 @@
+# The workload from class: four jobs arriving over the first five ticks.
+# NAME ARRIVAL BURST
+A 0 7
+B 2 4
+C 4 1
+D 5 4

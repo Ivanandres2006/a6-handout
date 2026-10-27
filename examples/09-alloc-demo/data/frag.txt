@@ -1,0 +1,16 @@
+# Eight blocks fill the arena. Three are freed, far apart, then a fourth
+# between two of them. Is there room for 100 bytes?
++A 40
++B 40
++C 40
++D 40
++E 40
++F 40
++G 40
++H 40
+-B
+-D
+-F
++I 100
+-C
++J 100
