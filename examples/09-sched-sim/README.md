@@ -1,20 +1,32 @@
 # COMP 310 — Operating Systems
 ## Week 9 — Readme
 
-<!-- Replace the italic prompt under each heading with your own words. Keep the headings: the specification names them, and `make test` checks that they are here. -->
 
 ## Build
 
-*How is it built? Give the exact command, and what it produces.*
+The command is: `make`
+
+this creates the build/sim file to run the program
 
 ## Run
 
-*The exact commands that run your simulator once it is built, with the arguments each policy needs, and the command that runs all three on your workload. `make test` runs the checks; it is not this command.*
+I used these commands to run my program:
+
+./build/sim fcfs data/workload.txt
+./build/sim rr data/workload.txt 3
+./build/sim mlfq data/workload.txt 4 4 30
+
+I used `make compare` to see the results of all three
 
 ## File map
 
-*One line per file you wrote or changed: what it is for. The files the starter gave you and that you did not change need no line.*
+- `src/sim.c` — Runs FCFS, RR, and MLFQ
+- `src/metrics.c` — Calculates the times for each job
+- `tests/test_mine.sh` — Checks if my code works
+- `REPORT.md` — Has my prediction and results
+- `README.md` — Shows how to run my code
+- `submission.json` — Has my information
 
 ## Notes
 
-*Anything a reader should know — what is unfinished, what you would do next, anything that surprised you.*
+All 8 course tests and my 5 tests passed. I compared the three scheduling methods and saw that MLFQ had the lowest average response time for my workload

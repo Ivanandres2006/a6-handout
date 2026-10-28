@@ -1,16 +1,4 @@
-/*
- * COMP 310 - Week 9 - A6: FCFS, round robin and a two-queue MLFQ.
- *
- * TODO: write the three functions src/sim.h declares, to the contract there
- * and to the rules in the handout's section 1: the five steps of every tick,
- * the two tie rules, a zero-length burst, and MLFQ's Rules 1 to 5. Until you
- * do, each returns -1 (no timeline), and `make test` shows 0 course tests
- * passing.
- *
- * How you organize it is your decision: one tick loop the three policies
- * share, or one loop each. Week 8's demo/sched.c shows a tick loop for FCFS
- * and round robin; MLFQ's second queue and its rules are new.
- */
+
 #define _POSIX_C_SOURCE 200809L   /* POSIX under -std=c11 (Week 2's rule)  */
 #include <stdio.h>
 
@@ -61,8 +49,6 @@ int sim_rr(Job *jobs, int n, int slice, char *chart) {
     int current = -1, used = 0;
 
     while (done < n) {
-
-        // Add jobs that arrive
         for (int i = 0; i < n; i++) {
             if (jobs[i].arrival == time) {
                 if (jobs[i].burst == 0) {
@@ -75,13 +61,11 @@ int sim_rr(Job *jobs, int n, int slice, char *chart) {
             }
         }
 
-        // Move job to the back when its turn ends
         if (current != -1 && used == slice) {
             queue[back++] = current;
             current = -1;
         }
 
-        // Choose next job
         if (current == -1 && front < back) {
             current = queue[front++];
             used = 0;
@@ -93,7 +77,6 @@ int sim_rr(Job *jobs, int n, int slice, char *chart) {
         if (done == n) break;
         if (time >= MAX_TICKS) return -1;
 
-        // Run one tick
         chart[time] = '.';
 
         if (current != -1) {
@@ -126,8 +109,6 @@ int sim_mlfq(Job *jobs, int n, int slice, int allot, int boost, char *chart) {
     int level[MAX_JOBS] = {0};
 
     while (done < n) {
-
-        // New jobs
         for (int i = 0; i < n; i++) {
             if (jobs[i].arrival == time) {
                 if (jobs[i].burst == 0) {
@@ -140,7 +121,6 @@ int sim_mlfq(Job *jobs, int n, int slice, int allot, int boost, char *chart) {
             }
         }
 
-        // Boost
         if (boost > 0 && time > 0 && time % boost == 0) {
             for (int i = 0; i < l; i++) {
                 high[h++] = low[i];
@@ -153,7 +133,6 @@ int sim_mlfq(Job *jobs, int n, int slice, int allot, int boost, char *chart) {
             for (int i = 0; i < n; i++) count[i] = 0;
         }
 
-        // End the current turn
         if (current != -1) {
             if (level[current] == 0 && count[current] >= allot) {
                 level[current] = 1;
@@ -170,7 +149,6 @@ int sim_mlfq(Job *jobs, int n, int slice, int allot, int boost, char *chart) {
             }
         }
 
-        // Choose next job
         if (current == -1) {
             if (h > 0) {
                 current = high[0];
@@ -193,7 +171,6 @@ int sim_mlfq(Job *jobs, int n, int slice, int allot, int boost, char *chart) {
         if (done == n) break;
         if (time >= MAX_TICKS) return -1;
 
-        // Run one tick
         chart[time] = '.';
 
         if (current != -1) {

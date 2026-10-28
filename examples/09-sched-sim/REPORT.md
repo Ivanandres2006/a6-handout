@@ -1,34 +1,35 @@
 # COMP 310 — Operating Systems
 ## Week 9 — Report
 
-<!-- Replace the italic prompt under each heading with your own words. Keep the headings: the specification names them, and `make test` checks that they are here. -->
+
 
 ## Prediction
 
-*Write this after `make workload` and before your first `make compare`, in your own words; `make compare` asks for it first. Looking at your workload and its parameters: which policy will have the lowest average response time, and which the highest, and why? Name one job you expect to finish later under the policy with the lowest average response than under the one with the highest, and say why. At least 40 words; being wrong is fine. Do not edit it afterwards; compare it with the data in `## Results`.*
+I think Round Robin will have the lowest average response time because every job gets a turn. FCFS will have the highest because job A takes 14 ticks, making the other jobs wait longer. I also think job A will finish faster with FCFS because it can run without stopping, while Round Robin makes it wait for other jobs.
 
 ## Answers
 
-*Fill in the right-hand side of each line, `key: value`, as section 2 of the handout describes: each policy's average response as `bench/compare.txt` prints it, the letter of your reversal job, and the `file:line` in `src/metrics.c` where a job's response time is computed. These are checked automatically, so the form matters.*
-
-fcfs_avg_response:
-rr_avg_response:
-mlfq_avg_response:
-reversal_job:
-response_line:
+fcfs_avg_response: 17.50
+rr_avg_response: 6.38
+mlfq_avg_response: 5.50
+reversal_job: A
+response_line: src/metrics.c:6
 
 ## What
 
-*How your simulator works: how a tick runs its five steps, where each tie rule is decided, and how MLFQ keeps its two queues, its allotment counts and its boost.*
+My code runs jobs using FCFS, Round Robin, and MLFQ. It checks when each job arrives and when it starts and finishes. FCFS runs one job at a time, Round Robin lets jobs take turns, and MLFQ uses two queues and moves jobs depending on their priority.
 
 ## Results
 
-*From bench/compare.txt: the three policies side by side, your prediction confronted with what happened and every difference explained, and your reversal job followed tick by tick through two of your own timelines.*
+My prediction was partly right. FCFS had the highest average response time with 17.50, but MLFQ had the lowest with 5.50. Round Robin got 6.38.
+
+Job A finished at 14 with FCFS, but at 45 with MLFQ. This happened because FCFS let A run without stopping, while MLFQ made A wait for other jobs. A ran from 0 to 4, 25 to 29, at 30, and 39 to 45, which made it finish much later.
 
 ## Citations
 
-*Anything you looked up, and where — a `man` page, the POSIX spec, a textbook section. If nothing, write "course material only".*
+course material only
+
 
 ## AI use
 
-*Write `none`, or name each AI tool you used, what you asked it, and which files or parts its output reached.*
+I used ChatGPT to help me understand the assignment, explain the code, and fix errors. I also used it to check my work and see what I still needed to finish.
